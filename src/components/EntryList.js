@@ -9,7 +9,7 @@ export function EntryList(){
     return(
         <div>
             <h2>Entries</h2>
-            <div className="scroll">
+            <div className ={(entries.length > 1) && "scroll"}>
             <ul className="list">
                 {entries.map(entrie => (<Entry key={entrie.id} entrie={entrie} />)
                 )}

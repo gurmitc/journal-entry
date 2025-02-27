@@ -100,8 +100,8 @@ input[type='number'] {
   line-height: 20px;
   padding: 2px 5px;
   position: absolute;
-  top: 50%;
-  left: 0;
+  top: 20%;
+  right: 0%;
   transform: translate(-100%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease;
