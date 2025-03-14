@@ -1,12 +1,22 @@
 import React, {useState, useContext} from "react";
 import { GlobalContext } from "../context/GlobalState";
 
+function getDate() {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    const date = today.getDate();
+    return `${month}/${date}/${year}`;
+  }
+
+
 export function AddEntry(){
     const accountList = ["User 1", "User 2", "User 3", "User 4"]
     
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [account, setAccount] = useState('')
+    const [account, setAccount] = useState('User 1')
+    const [currentDate, setCurrentDate] = useState(getDate());
 
     const { addEntry } = useContext(GlobalContext);
 
@@ -15,6 +25,7 @@ export function AddEntry(){
     
         const newEntry = {
           id: Math.floor(Math.random() * 100000000),
+          date: currentDate,
           account,
           title,
           description
@@ -39,11 +50,11 @@ export function AddEntry(){
             </div>
             <div className="form-control">
                 <label>Title</label>
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter text..."/>
+                <input type="title" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter text..."/>
             </div>
             <div className="form-control">
                 <label>Description</label>
-                <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Enter text..."/>
+                <textarea type="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Enter text..."></textarea>   
             </div>
             <div>
                 <button className="btn">Submit</button>
